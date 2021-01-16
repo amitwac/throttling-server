@@ -4,6 +4,8 @@
 #include<iostream>
 #include<map>
 
+const int MaxBacklog = 10;
+
 class ThrottleServer {
     std::map<std::string, int> userTokenQuota;
     std::map<std::string, int> userCurrentToken;
