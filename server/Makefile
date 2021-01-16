@@ -6,7 +6,7 @@ SERVER_SRCS = main.cc throttle-server.cc process-request-worker.cc reset-token-w
 all : throttleserver
 
 throttleserver: $(SERVER_SRCS)
-                $(CC) $(SERVER_SRCS) $(CXXFLAGS) $(LIBS) -o $@
+				$(CC) $(SERVER_SRCS) $(CXXFLAGS) $(LIBS) -o $@
 
 clean:
-    rm -f throttleserver
+	rm -f throttleserver
