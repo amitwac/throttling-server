@@ -31,12 +31,12 @@ void ProcessRequestWorker::operator()(const int& conn,
 
 std::string ProcessRequestWorker::acceptRequest(const int& conn) {
     char buff[MaxReadBuffer] = {0};
-    ssize_t valread = read(conn, buff, MaxReadBuffer);
-    std::cout << "Read: " << valread << " bytes, value: ["<< buff << "] on the connection." << std::endl;
+    read(conn, buff, MaxReadBuffer);
+    //std::cout << "Read: " << valread << " bytes, value: ["<< buff << "] on the connection." << std::endl;
     return buff;
 }
 
 void ProcessRequestWorker::sendResponse(const int& conn, const std::string& respStr) {
-    ssize_t bytesSent = write(conn, respStr.c_str(), respStr.length());
-    std::cout<< "Sent bytes: [" << bytesSent << "]" << std::endl;
+    write(conn, respStr.c_str(), respStr.length());
+    //std::cout<< "Sent bytes: [" << bytesSent << "]" << std::endl;
 }

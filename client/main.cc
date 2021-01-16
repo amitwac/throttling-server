@@ -35,7 +35,7 @@ int main(int argc, char*argv[]) {
             std::cerr << "Failed to send request" << std::endl;
             break;
         } else {
-            std::cout << "[" << username << "] " << serverResp << std::endl;
+            std::cout << username << std::endl << serverResp << std::endl;
         }
     } // END for loop
     return 0;

@@ -10,14 +10,22 @@
 #include "reset-token-worker.h"
 #include "process-request-worker.h"
 
+ThrottleServer* ThrottleServer::instance = nullptr;
+
+ThrottleServer* ThrottleServer::getInstance(const std::string& configfilePath) {
+    if (!instance) {
+        instance = new ThrottleServer(configfilePath);
+    }
+    return instance;
+}
+
 ThrottleServer::ThrottleServer(const std::string& configfilePath) {
-    
     if (!configfilePath.empty()) {
         std::ifstream config(configfilePath);
         if (config) {
             std::string configline;
             while (getline(config, configline)) {
-                std::cout << configline << std::endl;
+                //std::cout << configline << std::endl;
                 size_t delimiterpos = configline.find(":");
                 if ( delimiterpos!= std::string::npos) {
                     std::string token_str = configline.substr(delimiterpos + 1,
@@ -25,6 +33,7 @@ ThrottleServer::ThrottleServer(const std::string& configfilePath) {
                     std::stringstream ss(token_str);
                     int token_num = 0;
                     ss >> token_num;
+
                     // initialize both quota and current value maps
                     userTokenQuota.insert({configline.substr(0, delimiterpos), token_num});
                     userCurrentToken.insert({configline.substr(0, delimiterpos), token_num});
