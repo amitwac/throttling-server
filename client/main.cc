@@ -9,7 +9,7 @@ const std::string throttleserver_addr = "127.0.0.1";
 
 int main(int argc, char*argv[]) {
     if (argc < 3) {
-        std::cerr << "USAGE: username request-count" << std::endl;
+        std::cerr << "USAGE: generaterequest username request-count" << std::endl;
         exit(EXIT_FAILURE);
     }
     std::string username = argv[1];
