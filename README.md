@@ -47,58 +47,53 @@ To build and run throttling server, below packages should be installed on the ma
 
 # Run throttling server and send requests to it
 1. Run throttling server
-    >
-    >$ cd server
-    >
-    >$ ./throttleserver
-    >
-    >USAGE: throttleserver <user-quota-config-file>
-    >
-    >$ ./throttleserver "/path/to/user.config/file"
-    >
+<pre>
+$ cd server
+$ ./throttleserver
+USAGE: throttleserver 'user-quota-config-file'
+$ ./throttleserver '/path/to/user.config/file'
+</pre>
 2. Send request to the throttling server
-    >
-    > cd client
-    >
-    >$ ./generaterequest
-    >
-    >USAGE: username request-count
-    >
-    >$ ./generaterequest Don 100
-    >
+ <pre>
+ $ cd client
+ $ ./generaterequest
+ USAGE: generaterequest username request-count
+ $ ./generaterequest Don 100
+ </pre>
 
 
 # Sample response from throttling server
-Send 15 requests from User Mary, whose quota was 5
-    $ ./generaterequest Mary 15
-    Marry
-    Allow
-    Marry
-    Allow
-    Marry
-    Allow
-    Marry
-    Marry
-    Allow
-    Marry
-    Deny
-    Marry
-    Deny
-    Marry
-    Deny
-    Marry
-    Deny
-    Marry
-    Deny
-    Marry
-    Deny
-    Marry
-    Allow
-    Marry
-    Allow
-    Marry
-    Allow
-    Marry
-    Allow
-
-
+<pre>
+Send 15 requests from User Mary, whose quota has been set to '5':
+<pre>
+$ ./generaterequest Marry 15
+Marry
+Allow
+Marry
+Allow
+Marry
+Allow
+Marry
+Marry
+Allow
+Marry
+Deny
+Marry
+Deny
+Marry
+Deny
+Marry
+Deny
+Marry
+Deny
+Marry
+Deny
+Marry
+Allow
+Marry
+Allow
+Marry
+Allow
+Marry
+Allow
+</pre>
